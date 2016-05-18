@@ -1,10 +1,12 @@
-package com.yiketang.android;
+package com.yiketang.android.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+
+import com.yiketang.android.R;
 
 /**
  * A login screen that offers login via email/password.

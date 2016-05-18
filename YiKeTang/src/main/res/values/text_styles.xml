@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Text_Display">34sp</dimen>
+    <dimen name="Text_Headline">24sp</dimen>
+    <dimen name="Text_Title">21sp</dimen>
+    <dimen name="Text_Subheading">17sp</dimen>
+    <dimen name="Text_Body">15sp</dimen>
+    <dimen name="Text_Caption">13sp</dimen>
+    <dimen name="Text_Button">15sp</dimen>
+
+    <style name="TextTitleLight">
+        <item name="android:textSize">@dimen/Text_Title</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+    </style>
+
+    <style name="TextSubheadingLight">
+        <item name="android:textSize">@dimen/Text_Subheading</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+    </style>
+
+    <style name="TextBodyLight">
+        <item name="android:textSize">@dimen/Text_Body</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+    </style>
+
+    <style name="TextCaptionLight">
+        <item name="android:textSize">@dimen/Text_Caption</item>
+        <item name="android:textColor">@android:color/tertiary_text_light</item>
+    </style>
+
+</resources>
