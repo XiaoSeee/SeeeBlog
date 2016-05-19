@@ -52,10 +52,12 @@ public class LoginActivity extends BaseActivity {
                 submit();
                 break;
             case R.id.forget_password:
-                Intent intent = new Intent(mContext, ForgetPasswordActivity.class);
-                startActivity(intent);
+                Intent intent_forget = new Intent(mContext, ForgetPasswordActivity.class);
+                startActivity(intent_forget);
                 break;
             case R.id.user_register:
+                Intent intent_reg = new Intent(mContext, UserRegisterActivity.class);
+                startActivity(intent_reg);
                 break;
         }
     }

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2010 Johan Nilsson <http://markupartist.com>
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,50 +16,47 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Non focused states -->
-    <item android:state_focused="false"
-        android:state_pressed="false"
-        android:state_selected="false">
+    <item android:state_enabled="false">
         <shape>
-            <solid android:color="@color/colorPrimary"/>
-            <corners android:radius="@dimen/btn_radius"/>
+            <solid android:color="@color/disable_button" />
+            <corners android:radius="@dimen/btn_radius" />
+        </shape>
+    </item>
+    <!-- Non focused states -->
+    <item android:state_focused="false" android:state_pressed="false" android:state_selected="false">
+        <shape>
+            <solid android:color="@color/colorPrimary" />
+            <corners android:radius="@dimen/btn_radius" />
         </shape>
     </item>
 
-    <item android:state_focused="false"
-        android:state_pressed="false"
-        android:state_selected="true">
+    <item android:state_focused="false" android:state_pressed="false" android:state_selected="true">
         <shape>
-            <solid android:color="@color/colorPrimaryDark"/>
-            <corners android:radius="@dimen/btn_radius"/>
+            <solid android:color="@color/colorPrimaryDark" />
+            <corners android:radius="@dimen/btn_radius" />
         </shape>
     </item>
 
     <!-- Focused states -->
-    <item android:state_focused="true"
-        android:state_pressed="false"
-        android:state_selected="false">
+    <item android:state_focused="true" android:state_pressed="false" android:state_selected="false">
         <shape>
-            <solid android:color="@color/colorPrimaryDark"/>
-            <corners android:radius="@dimen/btn_radius"/>
+            <solid android:color="@color/colorPrimaryDark" />
+            <corners android:radius="@dimen/btn_radius" />
         </shape>
     </item>
 
-    <item
-        android:state_focused="true"
-        android:state_pressed="false"
-        android:state_selected="true">
+    <item android:state_focused="true" android:state_pressed="false" android:state_selected="true">
         <shape>
-            <solid android:color="@color/colorPrimaryDark"/>
-            <corners android:radius="@dimen/btn_radius"/>
+            <solid android:color="@color/colorPrimaryDark" />
+            <corners android:radius="@dimen/btn_radius" />
         </shape>
     </item>
 
     <!-- Pressed -->
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/colorPrimaryDark"/>
-            <corners android:radius="@dimen/btn_radius"/>
+            <solid android:color="@color/colorPrimaryDark" />
+            <corners android:radius="@dimen/btn_radius" />
         </shape>
     </item>
 
