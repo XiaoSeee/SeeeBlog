@@ -17,5 +17,11 @@
 
     <style name="FullScreen" parent="FullScreen.Base" />
 
+    <style name="ButtonTheme.Base" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/base_button_bg</item>
+        <item name="android:textSize">@dimen/Text_Button</item>
+        <item name="android:textColor">@android:color/primary_text_dark_nodisable</item>
+    </style>
+
 
 </resources>
