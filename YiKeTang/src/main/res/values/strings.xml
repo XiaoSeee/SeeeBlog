@@ -30,6 +30,8 @@
     <string name="forget_fail">设置密码失败</string>
     <string name="string_fail">请不要输入非法字符！</string>
     <string name="use_reset_password">请使用忘记密码功能找回您的密码~</string>
+    <string name="register_password">密码请输入6至24位数字或字母</string>
+    <string name="register_password_confirm">请再次输入密码</string>
 
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>

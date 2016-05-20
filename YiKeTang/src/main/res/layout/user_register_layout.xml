@@ -18,12 +18,10 @@
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/phone_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/phone_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -41,13 +39,11 @@
                 android:weightSum="2">
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/code_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <EditText
-                        android:id="@+id/code_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/register_code_write"
@@ -58,7 +54,6 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/fgt_code"
                     style="@style/ButtonTheme.Base"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -70,23 +65,14 @@
                     android:text="@string/register_code" />
             </LinearLayout>
 
-            <TextView
-                style="@style/TextTitleLight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/forget_title" />
-
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/password_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/forget_password_edit"
+                    android:hint="@string/register_password"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -95,15 +81,13 @@
 
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/again_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/again_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/forget_password_confirm"
+                    android:hint="@string/register_password_confirm"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -112,7 +96,6 @@
 
 
             <Button
-                android:id="@+id/fgt_login"
                 style="@style/ButtonTheme.Base"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
