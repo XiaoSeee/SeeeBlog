@@ -1,4 +1,4 @@
-package com.yiketang.android.view;
+package com.yiketang.android.ui.view;
 
 import android.os.CountDownTimer;
 import android.widget.Button;

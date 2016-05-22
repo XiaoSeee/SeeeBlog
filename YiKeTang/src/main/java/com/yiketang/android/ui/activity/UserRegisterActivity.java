@@ -1,4 +1,4 @@
-package com.yiketang.android.activity;
+package com.yiketang.android.ui.activity;
 
 import com.yiketang.android.R;
 import com.yiketang.android.base.ToolbarActivity;
@@ -15,6 +15,11 @@ public class UserRegisterActivity extends ToolbarActivity {
 
     @Override
     protected void initView() {
+
+    }
+
+    @Override
+    protected void createPresenter() {
 
     }
 }

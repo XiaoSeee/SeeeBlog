@@ -1,4 +1,4 @@
-package com.yiketang.android.model;
+package com.yiketang.android.model.entity;
 
 /**
  * Created by WuXiang on 2016/1/31.

@@ -1,4 +1,4 @@
-package com.yiketang.android.activity;
+package com.yiketang.android.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

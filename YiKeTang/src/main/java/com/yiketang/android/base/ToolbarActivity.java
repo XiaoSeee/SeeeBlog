@@ -21,11 +21,14 @@ public abstract class ToolbarActivity extends BaseActivity {
         setContentView(getContentView());
         initBaseView();
         initView();
+        createPresenter();
     }
 
     protected abstract int getContentView();
 
     protected abstract void initView();
+
+    protected abstract void createPresenter();
 
     public void initBaseView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);

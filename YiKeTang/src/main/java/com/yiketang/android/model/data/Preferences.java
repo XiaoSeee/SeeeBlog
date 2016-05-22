@@ -1,9 +1,9 @@
-package com.yiketang.android.data;
+package com.yiketang.android.model.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.yiketang.android.model.ThirdPartyInfo;
+import com.yiketang.android.model.entity.ThirdPartyInfo;
 import com.yiketang.android.util.Constants;
 
 

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yiketang.android.data.Preferences;
+import com.yiketang.android.model.data.Preferences;
 
 
 /**
