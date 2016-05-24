@@ -73,7 +73,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void loginError() {
-        Intent intent = new Intent(mContext, LoginActivity.class);
+        Intent intent = new Intent(mContext, MainActivity.class);
         startActivity(intent);
         finish();
     }
