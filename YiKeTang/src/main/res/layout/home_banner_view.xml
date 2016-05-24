@@ -8,20 +8,50 @@
     android:orientation="vertical"
     android:padding="6dp">
 
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/banner_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@android:color/white"
         app:layout_heightPercent="10%">
 
-    </RelativeLayout>
+        <View
+            android:id="@+id/top_img"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="#2196F3"
+            app:layout_marginLeftPercent="4.5%" />
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/top_more"
+            android:layout_toRightOf="@+id/top_img"
+            android:gravity="center|left"
+            android:text="@string/app_name"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="@dimen/Text_Subheading" />
+
+        <TextView
+            android:id="@+id/top_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/banner_top_more"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textSize="@dimen/Text_Body"
+            app:layout_marginRightPercent="4.5%" />
+
+
+    </android.support.percent.PercentRelativeLayout>
 
     <android.support.percent.PercentRelativeLayout
+        android:id="@+id/item_1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/banner_top"
-        android:background="#f65893"
         app:layout_heightPercent="45%"
         app:layout_widthPercent="50%">
 
@@ -31,20 +61,192 @@
             android:layout_height="0dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitXY"
-            android:src="@drawable/default_photo"
+            android:src="@drawable/demo_home"
             app:layout_heightPercent="65%"
             app:layout_marginTopPercent="4%"
             app:layout_widthPercent="82%" />
 
-        <TextView
-            style="@style/TextCaptionLight"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@+id/item_1_ig"
             android:layout_below="@+id/item_1_ig"
-            android:text="@string/action_sign_in"
+            android:orientation="vertical"
+            app:layout_widthPercent="82%">
+
+            <TextView
+                android:id="@+id/item_1_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/Text_Caption" />
+
+            <TextView
+                android:id="@+id/item_1_caption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/tertiary_text_light"
+                android:textSize="@dimen/Text_Caption"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/item_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/banner_top"
+        android:layout_toRightOf="@+id/item_1"
+        app:layout_heightPercent="45%"
+        app:layout_widthPercent="50%">
+
+        <ImageView
+            android:id="@+id/item_2_ig"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/demo_home"
+            app:layout_heightPercent="65%"
+            app:layout_marginTopPercent="4%"
             app:layout_widthPercent="82%" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/item_2_ig"
+            android:layout_below="@+id/item_2_ig"
+            android:orientation="vertical"
+            app:layout_widthPercent="82%">
+
+            <TextView
+                android:id="@+id/item_2_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/Text_Caption" />
+
+            <TextView
+                android:id="@+id/item_2_caption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/tertiary_text_light"
+                android:textSize="@dimen/Text_Caption"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/item_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/item_1"
+        app:layout_heightPercent="45%"
+        app:layout_widthPercent="50%">
+
+        <ImageView
+            android:id="@+id/item_3_ig"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/demo_home"
+            app:layout_heightPercent="65%"
+            app:layout_marginTopPercent="4%"
+            app:layout_widthPercent="82%" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/item_3_ig"
+            android:layout_below="@+id/item_3_ig"
+            android:orientation="vertical"
+            app:layout_widthPercent="82%">
+
+            <TextView
+                android:id="@+id/item_3_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/Text_Caption" />
+
+            <TextView
+                android:id="@+id/item_3_caption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/tertiary_text_light"
+                android:textSize="@dimen/Text_Caption"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/item_4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/item_2"
+        android:layout_toRightOf="@+id/item_3"
+        app:layout_heightPercent="45%"
+        app:layout_widthPercent="50%">
+
+        <ImageView
+            android:id="@+id/item_4_ig"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/demo_home"
+            app:layout_heightPercent="65%"
+            app:layout_marginTopPercent="4%"
+            app:layout_widthPercent="82%" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/item_4_ig"
+            android:layout_below="@+id/item_4_ig"
+            android:orientation="vertical"
+            app:layout_widthPercent="82%">
+
+            <TextView
+                android:id="@+id/item_4_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/Text_Caption" />
+
+            <TextView
+                android:id="@+id/item_4_caption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="@string/app_name"
+                android:textColor="@android:color/tertiary_text_light"
+                android:textSize="@dimen/Text_Caption"
+                android:visibility="gone" />
+        </LinearLayout>
     </android.support.percent.PercentRelativeLayout>
 
 

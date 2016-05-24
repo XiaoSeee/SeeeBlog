@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">壹课堂</string>
 
+    <!--主页-->
+    <string name="more">更多</string>
+
+
     <!-- Strings related to login -->
     <string name="prompt_email">请输入您的手机号码</string>
     <string name="prompt_password">请输入密码</string>

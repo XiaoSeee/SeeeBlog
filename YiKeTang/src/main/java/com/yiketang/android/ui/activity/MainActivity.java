@@ -27,6 +27,7 @@ public class MainActivity extends ToolbarActivity {
 
     @Override
     protected void initView() {
+        setTitle("2xx");
         initTab();
     }
 
@@ -50,22 +51,5 @@ public class MainActivity extends ToolbarActivity {
             mTab.setText(mTexts[i]);
             mTable.addTab(mTable.newTab().setCustomView(mTab));
         }
-
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 }
