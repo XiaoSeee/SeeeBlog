@@ -1,22 +1,18 @@
 package com.yiketang.android.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.yiketang.android.R;
-import com.yiketang.android.base.BaseReAdapter;
+import com.yiketang.android.base.BaseReHolder;
+import com.yiketang.android.base.SingleReAdapter;
 
 import java.util.List;
 
 /**
- * Created by WuXiang on 2016/5/25.
+ * Created by Xiao.Se on 2016/5/25.
  * ..
  */
-public class CourseListAdapter extends BaseReAdapter<String, CourseListAdapter.CourseHolder> {
+public class CourseListAdapter extends SingleReAdapter<String> {
 
 
     public CourseListAdapter(List<String> data, Context context) {
@@ -24,21 +20,14 @@ public class CourseListAdapter extends BaseReAdapter<String, CourseListAdapter.C
     }
 
     @Override
-    public CourseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CourseHolder(LayoutInflater.from(mContext).inflate(R.layout.course_item_layout, parent, false));
+    public void bindItemData(BaseReHolder viewHolder, String data, int position) {
+        viewHolder.setText(R.id.text_view, data);
     }
+
 
     @Override
-    protected void bindItemData(CourseHolder viewHolder, String data, int position) {
-        viewHolder.textView.setText(data);
+    protected int getContentView() {
+        return R.layout.course_item_layout;
     }
 
-    static class CourseHolder extends RecyclerView.ViewHolder {
-        TextView textView;
-
-        public CourseHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text_view);
-        }
-    }
 }

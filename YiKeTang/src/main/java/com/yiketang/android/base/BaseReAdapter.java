@@ -15,10 +15,6 @@ public abstract class BaseReAdapter<T, VH extends RecyclerView.ViewHolder> exten
     public List<T> mData;
     public Context mContext;
 
-    public void setOnItemClickLitener(OnItemClickListener listener) {
-        this.mListener = listener;
-    }
-
     public BaseReAdapter(List<T> data, Context context) {
         this.mData = data;
         this.mContext = context;
@@ -44,7 +40,11 @@ public abstract class BaseReAdapter<T, VH extends RecyclerView.ViewHolder> exten
         return mData.size();
     }
 
-    protected abstract void bindItemData(VH viewHolder, T data, int position);
+    public abstract void bindItemData(VH viewHolder, T data, int position);
+
+    public void setOnItemClickLitener(OnItemClickListener listener) {
+        this.mListener = listener;
+    }
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
