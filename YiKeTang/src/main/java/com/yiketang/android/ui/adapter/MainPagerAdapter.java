@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.yiketang.android.ui.activity.MainActivity;
+import com.yiketang.android.ui.fragment.CoursePageFragment;
 import com.yiketang.android.ui.fragment.HomePageFragment;
 import com.yiketang.android.util.LogUtil;
 
@@ -28,7 +29,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return HomePageFragment.newInstance();
             case 2:
-                return HomePageFragment.newInstance();
+                return CoursePageFragment.newInstance();
             case 3:
                 return HomePageFragment.newInstance();
             default:
