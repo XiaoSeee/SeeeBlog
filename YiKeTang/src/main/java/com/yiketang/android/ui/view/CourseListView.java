@@ -33,7 +33,7 @@ public class CourseListView extends LinearLayout {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.course_rcView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
         CourseListAdapter adapter = new CourseListAdapter(date, context);
-        adapter.setOnItemClickLitener(new BaseReAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new BaseReAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 LogUtil.d("position=" + position);

@@ -42,7 +42,7 @@ public abstract class BaseReAdapter<T, VH extends RecyclerView.ViewHolder> exten
 
     public abstract void bindItemData(VH viewHolder, T data, int position);
 
-    public void setOnItemClickLitener(OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.mListener = listener;
     }
 

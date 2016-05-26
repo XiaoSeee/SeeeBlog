@@ -3,6 +3,19 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.3'
+    signingConfigs {
+        debug {
+
+        }
+
+        release {
+            storeFile file("../yiketang.keystore.jks")
+            storePassword "wh87877189"
+            keyAlias "yiketang"
+            keyPassword "87877189"
+        }
+    }
+
     defaultConfig {
         applicationId "com.yiketang.android"
         minSdkVersion 9
@@ -15,6 +28,7 @@ android {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             buildConfigField "String", "HOST", "\"http://123.56.230.97:8080\""
+            signingConfig signingConfigs.release
         }
 
         release {
@@ -24,6 +38,7 @@ android {
             zipAlignEnabled true
             shrinkResources true
             proguardFiles '../proguard.cfg'
+            signingConfig signingConfigs.release
         }
     }
     productFlavors {
