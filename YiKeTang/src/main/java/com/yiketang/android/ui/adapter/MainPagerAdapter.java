@@ -2,12 +2,11 @@ package com.yiketang.android.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import com.yiketang.android.ui.activity.MainActivity;
 import com.yiketang.android.ui.fragment.CoursePageFragment;
 import com.yiketang.android.ui.fragment.HomePageFragment;
-import com.yiketang.android.util.LogUtil;
 
 
 /**
@@ -15,7 +14,7 @@ import com.yiketang.android.util.LogUtil;
  * MainPagerAdapter
  * 测试提交
  */
-public class MainPagerAdapter extends FragmentStatePagerAdapter {
+public class MainPagerAdapter extends FragmentPagerAdapter {
 
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);

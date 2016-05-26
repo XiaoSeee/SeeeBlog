@@ -3,6 +3,7 @@ package com.yiketang.android.base;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -34,6 +35,12 @@ public class BaseReHolder extends RecyclerView.ViewHolder {
     public BaseReHolder setText(int viewId, String text) {
         TextView tv = getView(viewId);
         tv.setText(text);
+        return this;
+    }
+
+    public BaseReHolder setRlBackgroundColor(int viewId, int colorId) {
+        RelativeLayout rl = getView(viewId);
+        rl.setBackgroundColor(colorId);
         return this;
     }
 }

@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.yiketang.android.R;
 import com.yiketang.android.base.BaseReAdapter;
 import com.yiketang.android.ui.adapter.CourseListAdapter;
+import com.yiketang.android.ui.view.roll.pager.DividerGridItemDecoration;
 import com.yiketang.android.util.LogUtil;
 
 import java.util.ArrayList;
@@ -27,7 +28,11 @@ public class CourseListView extends LinearLayout {
     private void initView(Context context) {
         List<String> date = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            date.add("理科数学");
+            if (i % 2 == 0) {
+                date.add("现代马克思主义");
+            } else {
+                date.add("理科数学");
+            }
         }
         View.inflate(context, R.layout.course_list_view, this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.course_rcView);
@@ -40,5 +45,6 @@ public class CourseListView extends LinearLayout {
             }
         });
         recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new DividerGridItemDecoration(context, R.drawable.course_list_decoration));
     }
 }

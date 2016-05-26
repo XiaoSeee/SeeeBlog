@@ -41,6 +41,8 @@ public class MainActivity extends ToolbarActivity {
         TabLayout mTable = findView(R.id.main_TL);
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
+        //保存4个Fragment状态，以免销毁影响用户体验
+        mViewPager.setOffscreenPageLimit(COUNT);
         mTable.setupWithViewPager(mViewPager);
 
         mTable.removeAllTabs();

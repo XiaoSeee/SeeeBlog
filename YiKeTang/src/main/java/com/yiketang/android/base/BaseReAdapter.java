@@ -11,9 +11,10 @@ import java.util.List;
  * ..
  */
 public abstract class BaseReAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
-    private OnItemClickListener mListener;
+    protected OnItemClickListener mListener;
     public List<T> mData;
     public Context mContext;
+
 
     public BaseReAdapter(List<T> data, Context context) {
         this.mData = data;
@@ -21,15 +22,19 @@ public abstract class BaseReAdapter<T, VH extends RecyclerView.ViewHolder> exten
     }
 
     @Override
-    public void onBindViewHolder(final VH holder, int position) {
+    public void onBindViewHolder(VH holder, int position) {
         final T item = getItem(position);
         bindItemData(holder, item, position);
         //如果设置了回调，则设置点击事件
+        setListener(holder, position);
+    }
+
+    protected void setListener(final VH holder, final int position) {
         if (mListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mListener.onItemClick(holder.itemView, holder.getLayoutPosition());
+                    mListener.onItemClick(holder.itemView, position);
                 }
             });
         }
