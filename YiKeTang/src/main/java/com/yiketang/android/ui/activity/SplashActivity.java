@@ -1,7 +1,6 @@
 package com.yiketang.android.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -38,9 +37,12 @@ public class SplashActivity extends BaseActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_layou);
+    protected int getContentView() {
+        return R.layout.splash_layou;
+    }
+
+    @Override
+    protected void initBaseView() {
         Window window = getWindow();
         WindowManager.LayoutParams params = window.getAttributes();
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
@@ -52,6 +54,11 @@ public class SplashActivity extends BaseActivity {
                 loginIn();
             }
         }, 3000);
+    }
+
+    @Override
+    protected void createPresenter() {
+
     }
 
 
@@ -74,6 +81,7 @@ public class SplashActivity extends BaseActivity {
 
     private void loginError() {
         Intent intent = new Intent(mContext, MainActivity.class);
+//        Intent intent = new Intent(mContext, LoginActivity.class);
         startActivity(intent);
         finish();
     }

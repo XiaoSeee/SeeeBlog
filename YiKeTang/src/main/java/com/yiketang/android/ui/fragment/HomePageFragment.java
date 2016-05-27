@@ -1,9 +1,12 @@
 package com.yiketang.android.ui.fragment;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.LinearLayout;
 
 import com.yiketang.android.R;
 import com.yiketang.android.base.BaseFragment;
+import com.yiketang.android.base.ToolbarFragment;
 import com.yiketang.android.presenter.contract.HomePageContract;
 import com.yiketang.android.ui.view.HomeBannerView;
 import com.yiketang.android.util.LogUtil;
@@ -12,7 +15,7 @@ import com.yiketang.android.util.LogUtil;
  * Created by Xiao.Se on 2016/5/23.
  * ..
  */
-public class HomePageFragment extends BaseFragment implements HomePageContract.View {
+public class HomePageFragment extends ToolbarFragment implements HomePageContract.View {
 
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
@@ -30,7 +33,9 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     @Override
-    protected void initView() {
+    protected void initToolbarView() {
+        setTitle(R.string.app_name);
+
         LinearLayout ll = findView(R.id.scroll);
         HomeBannerView view = new HomeBannerView(mContext);
         view.setListener(new HomeBannerView.TaskItemListener() {
@@ -53,5 +58,11 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     protected void createPresenter() {
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_page_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

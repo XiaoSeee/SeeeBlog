@@ -4,6 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.yiketang.android.R;
+import com.yiketang.android.base.BaseActivity;
 import com.yiketang.android.base.ToolbarActivity;
 import com.yiketang.android.ui.adapter.MainPagerAdapter;
 import com.yiketang.android.ui.view.TabCustomView;
@@ -12,7 +13,7 @@ import com.yiketang.android.ui.view.TabCustomView;
  * Created by Xiao.Se on 2016/5/23.
  * 主页
  */
-public class MainActivity extends ToolbarActivity {
+public class MainActivity extends BaseActivity {
 
     public static final int COUNT = 4;
     public static int[] drawables = {R.drawable.icon_demo, R.drawable.icon_demo, R.drawable.icon_demo, R.drawable.icon_demo,};
@@ -26,8 +27,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void initView() {
-        setTitle("2xx");
+    protected void initBaseView() {
         initTab();
     }
 

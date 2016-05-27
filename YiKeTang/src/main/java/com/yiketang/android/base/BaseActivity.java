@@ -13,17 +13,28 @@ import com.yiketang.android.model.data.Preferences;
  * Created by WuXiang on 2016/2/5.
  * Activity基类
  */
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
-    public Context mContext;
-    public Preferences mSpf;
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+    protected Context mContext;
+    protected Preferences mSpf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentView());
+
         mContext = this;
         mSpf = Preferences.getInstance(mContext);
+
+        initBaseView();
+
+        createPresenter();
     }
 
+    protected abstract int getContentView();
+
+    protected abstract void initBaseView();
+
+    protected abstract void createPresenter();
 
     @Override
     protected void onStart() {

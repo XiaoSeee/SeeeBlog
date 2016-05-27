@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.yiketang.android.R;
 import com.yiketang.android.base.BaseFragment;
 import com.yiketang.android.base.BaseReAdapter;
+import com.yiketang.android.base.ToolbarFragment;
 import com.yiketang.android.ui.adapter.MajorListAdapter;
 import com.yiketang.android.ui.view.CourseListView;
 import com.yiketang.android.util.LogUtil;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by WuXiang on 2016/5/25.
  * ..
  */
-public class CoursePageFragment extends BaseFragment {
+public class CoursePageFragment extends ToolbarFragment {
 
     public static CoursePageFragment newInstance() {
         return new CoursePageFragment();
@@ -31,7 +32,12 @@ public class CoursePageFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initToolbarView() {
+
+        setTitle(R.string.forget_finish);
+
+        mToolbar.inflateMenu(R.menu.home_page_menu);
+
         LinearLayout ll = findView(R.id.course_sc);
         CourseListView view = new CourseListView(mContext);
         ll.addView(view);

@@ -1,8 +1,8 @@
 package com.yiketang.android.base;
 
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.yiketang.android.R;
 
@@ -13,28 +13,36 @@ import com.yiketang.android.R;
  * ..
  */
 public abstract class ToolbarActivity extends BaseActivity {
-    public ActionBar mActionBar;
+    protected ActionBar mActionBar;
+    protected TextView mTitle;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getContentView());
-        initBaseView();
+    protected void initBaseView() {
+        initToolbar();
         initView();
-        createPresenter();
     }
 
-    protected abstract int getContentView();
+    public void initToolbar() {
+        Toolbar toolbar = findView(R.id.activity_toolbar);
+        mTitle = findView(R.id.toolbar_title);
+        setSupportActionBar(toolbar);
+        mActionBar = getSupportActionBar();
+        if (null != mActionBar) {
+            mActionBar.setDisplayShowTitleEnabled(false);
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
     protected abstract void initView();
 
-    protected abstract void createPresenter();
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle.setText(title);
+    }
 
-    public void initBaseView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
-        mActionBar = getSupportActionBar();
-
+    @Override
+    public void setTitle(int titleId) {
+        this.setTitle(getText(titleId));
     }
 
     @Override
