@@ -23,4 +23,13 @@
     </declare-styleable>
     <!--roll.pager.view      end        -->
 
+    <!--setting item view           start-->
+    <declare-styleable name="SettingItemView">
+        <attr name="leftIcon" format="integer" />
+        <attr name="settingTitle" format="integer" />
+        <attr name="rightIcon" format="integer" />
+    </declare-styleable>
+    <!--setting item view           end-->
+
+
 </resources>

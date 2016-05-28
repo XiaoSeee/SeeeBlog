@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.yiketang.android.ui.activity.MainActivity;
 import com.yiketang.android.ui.fragment.CoursePageFragment;
 import com.yiketang.android.ui.fragment.HomePageFragment;
+import com.yiketang.android.ui.fragment.MyPageFragment;
 
 
 /**
@@ -30,7 +31,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return CoursePageFragment.newInstance();
             case 3:
-                return HomePageFragment.newInstance();
+                return MyPageFragment.newInstance();
             default:
                 return null;
         }
