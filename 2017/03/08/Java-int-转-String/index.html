@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Java int 转 String · Hexo</title><meta name="description" content="Java int 转 String - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Hexo"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/XiaoSeee" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Java int 转 String</h1><div class="post-info">Mar 8, 2017</div><div class="post-content"><h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i=<span class="number">12345</span>;</div><div class="line">String s=<span class="string">""</span>;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>第一种方法：<code>s=i+&quot;&quot;;</code></p>
+</li>
+<li><p>第二种方法：<code>s=String.valueOf(i);</code></p>
+</li>
+</ol>
+<blockquote>
+<p>第一种方法：s=i+””;  //会产生两个String对象<br>第二种方法：s=String.valueOf(i); //直接使用String类的静态方法，只产生一个对象</p>
+</blockquote>
+<h3 id="String-gt-int"><a href="#String-gt-int" class="headerlink" title="String -&gt; int"></a>String -&gt; int</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s=<span class="string">"12345"</span>;</div><div class="line"><span class="keyword">int</span> i;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>第一种方法：<code>i=Integer.parseInt(s);</code></p>
+</li>
+<li><p>第二种方法：<code>i=Integer.valueOf(s).intValue();</code></p>
+</li>
+</ol>
+<blockquote>
+<p>第一种方法：i=Integer.parseInt(s);//直接使用静态方法，不会产生多余的对象，但会抛出异常<br>第二种方法：i=Integer.valueOf(s).intValue();//Integer.valueOf(s) 相当于 new  Integer(Integer.parseInt(s))，也会抛异常，但会多产生一个对象</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/03/08/博客维护方法/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://yoursite.com">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
