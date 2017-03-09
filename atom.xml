@@ -4,12 +4,12 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2017-03-08T09:44:54.578Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://xiaosee.top/"/>
+  <updated>2017-03-09T03:21:23.567Z</updated>
+  <id>http://xiaosee.top/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>XiaoSe</name>
     
   </author>
   
@@ -17,48 +17,60 @@
   
   <entry>
     <title>Java int 转 String</title>
-    <link href="http://yoursite.com/2017/03/08/Java-int-%E8%BD%AC-String/"/>
-    <id>http://yoursite.com/2017/03/08/Java-int-转-String/</id>
+    <link href="http://xiaosee.top/2017/03/08/Java-int-%E8%BD%AC-String/"/>
+    <id>http://xiaosee.top/2017/03/08/Java-int-转-String/</id>
     <published>2017-03-08T09:39:41.000Z</published>
-    <updated>2017-03-08T09:44:54.578Z</updated>
+    <updated>2017-03-09T03:21:23.567Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i=<span class="number">12345</span>;</div><div class="line">String s=<span class="string">""</span>;</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">12345</span>;</div><div class="line">String s = <span class="string">""</span>;</div></pre></td></tr></table></figure>
 <ol>
-<li><p>第一种方法：<code>s=i+&quot;&quot;;</code></p>
+<li><p>第一种方法：<code>s = i + &quot;&quot;;</code></p>
 </li>
-<li><p>第二种方法：<code>s=String.valueOf(i);</code></p>
+<li><p>第二种方法：<code>s = String.valueOf(i);</code></p>
 </li>
 </ol>
 <blockquote>
-<p>第一种方法：s=i+””;  //会产生两个String对象<br>第二种方法：s=String.valueOf(i); //直接使用String类的静态方法，只产生一个对象</p>
+<p>第一种方法：<code>s = i + &quot;&quot;;</code> 会产生两个 String 对象。<br>第二种方法：<code>s = String.valueOf(i);</code> 直接使用 String 类的静态方法，只产生一个对象。</p>
 </blockquote>
-<h3 id="String-gt-int"><a href="#String-gt-int" class="headerlink" title="String -&gt; int"></a>String -&gt; int</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s=<span class="string">"12345"</span>;</div><div class="line"><span class="keyword">int</span> i;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="String-gt-int"><a href="#String-gt-int" class="headerlink" title="String -&gt; int"></a>String -&gt; int</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"12345"</span>;</div><div class="line"><span class="keyword">int</span> i;</div></pre></td></tr></table></figure>
 <ol>
-<li><p>第一种方法：<code>i=Integer.parseInt(s);</code></p>
+<li><p>第一种方法：<code>i = Integer.parseInt(s);</code></p>
 </li>
-<li><p>第二种方法：<code>i=Integer.valueOf(s).intValue();</code></p>
+<li><p>第二种方法：<code>i = Integer.valueOf(s).intValue();</code></p>
 </li>
 </ol>
 <blockquote>
-<p>第一种方法：i=Integer.parseInt(s);//直接使用静态方法，不会产生多余的对象，但会抛出异常<br>第二种方法：i=Integer.valueOf(s).intValue();//Integer.valueOf(s) 相当于 new  Integer(Integer.parseInt(s))，也会抛异常，但会多产生一个对象</p>
+<p>第一种方法：<code>i = Integer.parseInt(s);</code>直接使用静态方法，不会产生多余的对象，但会抛出异常。<br>第二种方法：<code>i = Integer.valueOf(s).intValue();</code>，<code>Integer.valueOf(s)</code> 相当于 <code>new Integer(Integer.parseInt(s))</code>，也会抛异常，但会多产生一个对象。</p>
 </blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;int-gt-String&quot;&gt;&lt;a href=&quot;#int-gt-String&quot; class=&quot;headerlink&quot; title=&quot;int -&amp;gt; String&quot;&gt;&lt;/a&gt;int -&amp;gt; String&lt;/h3&gt;&lt;figure class=&quot;highligh
+      &lt;h3 id=&quot;int-gt-String&quot;&gt;&lt;a href=&quot;#int-gt-String&quot; class=&quot;headerlink&quot; title=&quot;int -&amp;gt; String&quot;&gt;&lt;/a&gt;int -&amp;gt; String&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;12345&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;String s = &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;第一种方法：&lt;code&gt;s = i + &amp;quot;&amp;quot;;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第二种方法：&lt;code&gt;s = String.valueOf(i);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一种方法：&lt;code&gt;s = i + &amp;quot;&amp;quot;;&lt;/code&gt; 会产生两个 String 对象。&lt;br&gt;第二种方法：&lt;code&gt;s = String.valueOf(i);&lt;/code&gt; 直接使用 String 类的静态方法，只产生一个对象。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
+    
+      <category term="Java int String" scheme="http://xiaosee.top/tags/Java-int-String/"/>
     
   </entry>
   
   <entry>
     <title>博客维护方法</title>
-    <link href="http://yoursite.com/2017/03/08/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2017/03/08/博客维护方法/</id>
+    <link href="http://xiaosee.top/2017/03/08/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%B3%95/"/>
+    <id>http://xiaosee.top/2017/03/08/博客维护方法/</id>
     <published>2017-03-08T08:10:23.000Z</published>
-    <updated>2017-03-08T09:38:00.162Z</updated>
+    <updated>2017-03-09T03:23:20.829Z</updated>
     
     <content type="html"><![CDATA[<p>博客搭建好了，记录下维护方法。免得以后忘记了。<br><a id="more"></a></p>
 <h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><ol>
@@ -76,8 +88,7 @@
 </li>
 <li><p>安装Hexo：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd d:/SeeeBlog</div><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init</div><div class="line">$ npm install</div><div class="line">$ hexo g # 或者hexo generate</div><div class="line">$ hexo s # 或者hexo server，可以在http://localhost:4000/ 查看</div></pre></td></tr></table></figure>
-</li>
-<li><p>常用命令：</p>
+<p>常用命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;postName&quot; #新建文章</div><div class="line">$ hexo new page &quot;pageName&quot; #新建页面</div><div class="line"></div><div class="line">$ hexo n == hexo new</div><div class="line">$ hexo g == hexo generate</div><div class="line">$ hexo s == hexo server</div><div class="line">$ hexo d == hexo deploy</div><div class="line"></div><div class="line">$ hexo d -g #生成部署</div><div class="line">$ hexo s -g #生成预览</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装Apollo 主题：<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">下载 zip </a>文件解压到<code>themes</code>文件夹下面</p>
@@ -98,6 +109,8 @@
     
     </summary>
     
+    
+      <category term="hexo" scheme="http://xiaosee.top/tags/hexo/"/>
     
   </entry>
   
