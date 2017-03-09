@@ -47,9 +47,7 @@ Android蓝牙部分是很复杂的，也涉及很多名词和功能。本文介�
  ```
 
 ### 搜索
- 1. 获取已配对的设备
-
- 对于之前已经配对成功的设备，系统会把它的信息存储在本地。再去调用搜索的时候，系统是不会重新再次发现这个设备的。
+ 1. 获取已配对的设备。对于之前已经配对成功的设备，系统会把它的信息存储在本地。再去调用搜索的时候，系统是不会重新再次发现这个设备的。
  ``` java
  Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
  ```
@@ -90,80 +88,25 @@ if (item != null && bondState == BluetoothDevice.BOND_BONDED) {
     connectDevice(item);
 }
 ```
+
+ 3. 配对的几种状态
+``` java
+    public static final int BOND_NONE = 10;
+    public static final int BOND_BONDING = 11;
+    public static final int BOND_BONDED = 12;
+```
 ### 连接
-### 一长串完整代码
-``` java 
-public class BluetoothDeviceListActivity extends Activity {
-    private static final String TAG = "DeviceListActivity";
-    public static String EXTRA_DEVICE_ADDRESS = "DEVICE_ADDRESS";
-    private static final int REQUEST_ENABLE_BT = 3;
+配对（绑定）和连接是两个不同的过程，配对是指两个设备发现了对方的存在，可以获取到对方的名称、地址等信息，有能力建立起连接。连接是指两个设备共享了一个 RFCOMM 通道，有能力进行数据互传。确认绑定上了之后，才能开始连接，连接其实就是连接这个蓝牙设备支持的 Profile 。
 
-    private BluetoothAdapter mBluetoothAdapter;
-    private BluetoothA2dp mA2dpService;
-    private BluetoothHeadset mHeadsetService;
+可以观察一下设置里面蓝牙连接的过程过程，就是先开始配对，配对成功后才开始连接所有支持的 Profile。这一步也是比较坑的地方，网上都没有详细的对这一块说明。我也是在 Setting 的源码里面翻了半天才找到这块的逻辑。但是系统应用可以直接调用连接的方法，却不外开放...
 
-    private MapList<String, DeviceItem> mPairedDevicesMap;
-    private MapList<String, DeviceItem> mNewDevicesMap;
-    private BluetoothDeviceAdapter mPairedDevicesAdapter;
-    private BluetoothDeviceAdapter mNewDevicesAdapter;
-
-    private TextView mTitle;
-    private boolean isInitReceiver = false;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Setup the window
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.activity_device_list);
-        setResult(Activity.RESULT_CANCELED);
-        mTitle = (TextView) findViewById(R.id.devices_title);
-
-        //开启蓝牙
-        if (openBluetooth()) {
-            //获取Profile实例
-            getProfileProxy();
-        }
-    }
-
-    protected void setThisTitle(int resid) {
-        mTitle.setText(resid);
-    }
-
-    private void initReceiver() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(BluetoothDevice.ACTION_FOUND);
-        intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        intentFilter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        intentFilter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
-        intentFilter.addAction(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED);
-        registerReceiver(mReceiver, intentFilter);
-        isInitReceiver = true;
-    }
-
-    private boolean openBluetooth() {
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBluetoothAdapter == null) {
-            finish();
-            return false;
-        } else {
-            if (!mBluetoothAdapter.isEnabled()) {
-                Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
-                return false;
-            } else {
-                return true;
-            }
-        }
-    }
-
-    private void getProfileProxy() {
+ 1. 首先我们要提前获取 Profile，这里拿A2dp来举例，其他的原理是一样的。
+``` java
         mBluetoothAdapter.getProfileProxy(this, new BluetoothProfile.ServiceListener() {
             @Override
             public void onServiceConnected(int profile, BluetoothProfile proxy) {
                 if (mA2dpService == null) {
                     mA2dpService = (BluetoothA2dp) proxy;
-                    initView();
                 }
             }
 
@@ -171,265 +114,51 @@ public class BluetoothDeviceListActivity extends Activity {
             public void onServiceDisconnected(int profile) {
             }
         }, BluetoothProfile.A2DP);
-
-        mBluetoothAdapter.getProfileProxy(this, new BluetoothProfile.ServiceListener() {
-            @Override
-            public void onServiceConnected(int profile, BluetoothProfile proxy) {
-                if (mHeadsetService == null) {
-                    mHeadsetService = (BluetoothHeadset) proxy;
-                    initView();
-                }
-            }
-
-            @Override
-            public void onServiceDisconnected(int profile) {
-            }
-        }, BluetoothProfile.HEADSET);
-    }
-
-    private void initView() {
-        if (mA2dpService != null && mHeadsetService != null) {
-            //注册广播接收器
-            initReceiver();
-
-            //实例化两个List
-            initPairedView();
-            initNewView();
-        }
-    }
-
-    private void initPairedView() {
-        mPairedDevicesMap = new MapList<>();
-
-        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-        if (pairedDevices.size() > 0) {
-            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
-            for (BluetoothDevice device : pairedDevices) {
-                if (checkName(device.getName())) {
-                    mPairedDevicesMap.add(device.getAddress(), toDeviceItem(device));
-                }
-            }
-        }
-
-        mPairedDevicesAdapter = new BluetoothDeviceAdapter(this, mPairedDevicesMap);
-        mPairedDevicesAdapter.setOnItemClickListener(mDeviceClickListener);
-        ListView pairedListView = (ListView) findViewById(R.id.paired_devices);
-        pairedListView.setAdapter(mPairedDevicesAdapter);
-    }
-
-    private void initNewView() {
-        // Initialize the button to perform device discovery
-        Button scanButton = (Button) findViewById(R.id.button_scan);
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                doDiscovery();
-                v.setVisibility(View.GONE);
-            }
-        });
-
-        mNewDevicesMap = new MapList<>();
-
-        mNewDevicesAdapter = new BluetoothDeviceAdapter(this, mNewDevicesMap);
-        mNewDevicesAdapter.setOnItemClickListener(mDeviceClickListener);
-        ListView newDevicesListView = (ListView) findViewById(R.id.new_devices);
-        newDevicesListView.setAdapter(mNewDevicesAdapter);
-    }
-
-    private DeviceItem toDeviceItem(BluetoothDevice device) {
-        DeviceItem item = new DeviceItem();
-        item.setDevice(device);
-        item.setName(device.getName());
-        item.setAddress(device.getAddress());
-        item.setBondState(device.getBondState());
-        item.setA2dpProfileState(mA2dpService.getConnectionState(device));
-        item.setHeadsetProfileState(mHeadsetService.getConnectionState(device));
-        return item;
-    }
-
-    /**
-     * 配对
-     */
-    private void pairDevice(DeviceItem item) {
-        if (mBluetoothAdapter != null) {
-            mBluetoothAdapter.cancelDiscovery();
-        }
-
-        //如果设备没有绑定
-        if (item.getBondState() == BluetoothDevice.BOND_NONE) {
-            BluetoothDevice device = item.getDevice();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                //Android 4.4 API 19 以上才开放Bond接口
-                device.createBond();
-            } else {
-                //API 19 以下用反射调用Bond接口
-                try {
-                    device.getClass().getMethod("connect").invoke(device);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } else if (item.getBondState() == BluetoothDevice.BOND_BONDED) {
-            connectDevice(item);
-        }
-    }
-
-    /**
-     * 连接
-     * 最主要连接A2dp协议，Headset附带
-     */
-    private void connectDevice(DeviceItem item) {
-        if (item.getBondState() == BluetoothDevice.BOND_BONDED) {
-            //如果A2dp Profile 没有连接的情况
-            if (item.getA2dpProfileState() == BluetoothProfile.STATE_DISCONNECTED) {
-                //API 不开放连接 Profile 的接口，利用反射调用连接方法
-                try {
-                    mA2dpService.getClass().getMethod("connect", BluetoothDevice.class)
-                            .invoke(mA2dpService, item.getDevice());
-
-                    mHeadsetService.getClass().getMethod("connect", BluetoothDevice.class)
-                            .invoke(mHeadsetService, item.getDevice());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (item.getA2dpProfileState() == BluetoothProfile.STATE_CONNECTED) {
-                returnTheMac(item);
-            }
-        }
-    }
-
-    private void returnTheMac(DeviceItem item) {
-        Intent intent = new Intent();
-        intent.putExtra(EXTRA_DEVICE_ADDRESS, item.getAddress());
-        setResult(Activity.RESULT_OK, intent);
-        finish();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case REQUEST_ENABLE_BT:
-                if (resultCode == Activity.RESULT_OK) {
-                    //获取Profile实例
-                    getProfileProxy();
-                } else {
-                    finish();
-                }
-                break;
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (isInitReceiver) {
-            unregisterReceiver(mReceiver);
-        }
-
-        if (mBluetoothAdapter != null) {
-            mBluetoothAdapter.cancelDiscovery();
-
-            mBluetoothAdapter.closeProfileProxy(BluetoothProfile.A2DP, mA2dpService);
-            mBluetoothAdapter.closeProfileProxy(BluetoothProfile.HEADSET, mHeadsetService);
-            mA2dpService = null;
-            mHeadsetService = null;
-        }
-        super.onDestroy();
-    }
-
-    /**
-     * 开始搜索设备
-     */
-    private void doDiscovery() {
-        setThisTitle(R.string.scanning);
-
-        // Turn on sub-title for new devices
-        findViewById(R.id.title_new_devices).setVisibility(View.VISIBLE);
-
-        // If we're already discovering, stop it
-        if (mBluetoothAdapter.isDiscovering()) {
-            mBluetoothAdapter.cancelDiscovery();
-        }
-
-        // Request discover from BluetoothAdapter
-        mBluetoothAdapter.startDiscovery();
-    }
-
-    private boolean checkName(String name) {
-        return null != name && name.startsWith("T100");
-    }
-
-    /**
-     * The on-click listener for all devices in the ListViews
-     */
-    private BluetoothDeviceAdapter.OnItemClickListener mDeviceClickListener =
-            new BluetoothDeviceAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(DeviceItem item) {
-                    pairDevice(item);
-                }
-            };
-
-
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                //发现新设备
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                    if (checkName(device.getName())) {
-                        mNewDevicesAdapter.add(device.getAddress(), toDeviceItem(device));
-                    }
-                }
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                //搜索结束
-                if (mNewDevicesMap.getSize() == 0) {
-                    setThisTitle(R.string.none_found);
-                } else {
-                    setThisTitle(R.string.select_device);
-                }
-            } else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-                //设备绑定状态改变
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                int bondState = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.ERROR);
-                DeviceItem item = null;
-
-                if (mPairedDevicesMap.getItem(device.getAddress()) != null) {
-                    item = mPairedDevicesMap.getItem(device.getAddress());
-                    item.setBondState(bondState);
-                    mPairedDevicesAdapter.notifyDataSetChanged();
-                } else if (mNewDevicesMap.getItem(device.getAddress()) != null) {
-                    item = mNewDevicesMap.getItem(device.getAddress());
-                    item.setBondState(bondState);
-                    mNewDevicesAdapter.notifyDataSetChanged();
-                }
-
-                //收到绑定成功的通知后自动连接
-                if (item != null && bondState == BluetoothDevice.BOND_BONDED) {
-                    connectDevice(item);
-                }
-            } else if (BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED.equals(action)) {
-                //A2dp连接状态改变
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                int profileState = intent.getIntExtra(BluetoothProfile.EXTRA_STATE, BluetoothProfile.STATE_DISCONNECTED);
-                DeviceItem item = null;
-
-                if (mPairedDevicesMap.getItem(device.getAddress()) != null) {
-                    item = mPairedDevicesMap.getItem(device.getAddress());
-                    item.setA2dpProfileState(profileState);
-                    mPairedDevicesAdapter.notifyDataSetChanged();
-                } else if (mNewDevicesMap.getItem(device.getAddress()) != null) {
-                    item = mNewDevicesMap.getItem(device.getAddress());
-                    item.setA2dpProfileState(profileState);
-                    mNewDevicesAdapter.notifyDataSetChanged();
-                }
-
-                //收到连接成功的通知
-                if (item != null && profileState == BluetoothProfile.STATE_CONNECTED) {
-                    returnTheMac(item);
-                }
-            }
-        }
-    };
-}
 ```
+ 2. 当我们收到配对成功的广播或者确定设备已经配对成功后，我们就要调用 Profile 的`connect`方法来连接。但是这个方法被 Google 给`@hide`了。像上面一样用反射...
+``` java
+    try {
+        mA2dpService.getClass().getMethod("connect", BluetoothDevice.class)
+                .invoke(mA2dpService, item.getDevice());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+```
+
+ 3. 连接成功系统会发送广播`BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED`
+``` java
+BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+int profileState = intent.getIntExtra(BluetoothProfile.EXTRA_STATE, BluetoothProfile.STATE_DISCONNECTED);
+```
+
+ 4. 连接的几种状态
+``` java
+    /** The profile is in disconnected state */
+    public static final int STATE_DISCONNECTED  = 0;
+    /** The profile is in connecting state */
+    public static final int STATE_CONNECTING    = 1;
+    /** The profile is in connected state */
+    public static final int STATE_CONNECTED     = 2;
+    /** The profile is in disconnecting state */
+    public static final int STATE_DISCONNECTING = 3;
+```
+
+### 坑坑坑
+哈哈，你以为连接上了就完事了吗？！这里面还有几个坑容我给你说说。
+
+ 1. 不要忘记关闭 Profile。我们为了连接不是获取了 Profile 吗，在连接完成之后一定要关闭掉他，一直不关闭的话会报错。
+ ``` java
+ mBluetoothAdapter.closeProfileProxy(BluetoothProfile.A2DP, mA2dpService);
+ mA2dpService = null;
+ ```
+ 2. 蓝牙连接成功了之后系统会通知手机状态发生了改变，就像切换了横竖屏一样，需要重新调用这个 Activity 的生命周期。当时我发现只要我一连接成功，我的界面就闪一下回到初始状态。就纳闷了半天，然后我一直以为是用反射连接导致程序异常重启了...几经摸索我发现是没有设置`android:configChanges`的缘故。
+``` xml
+android:configChanges="keyboard|keyboardHidden|navigation"
+```
+ 其实前面两个属性我也早想到了，唯独最后一个，在官方文档里面写的`This should never normally happen.`我天真的相信了，一直没试它。最后实在没办法了把所有的属性都写上去，然后一个个减，最终发现了这三少一个都不行。
+
+| 值              | 说明   |
+| --------        | :-----  |
+| "keyboard"        |键盘类型发生了变化 — 例如，用户插入了一个外置键盘。|
+| "keyboardHidden"  |键盘无障碍功能发生了变化 — 例如，用户显示了硬件键盘。|
+| "navigation"      |导航类型（轨迹球/方向键）发生了变化。（这种情况通常永远不会发生。）|
