@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaosee.top/"/>
-  <updated>2017-03-09T15:44:32.546Z</updated>
+  <updated>2017-03-10T01:21:15.878Z</updated>
   <id>http://xiaosee.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xiaosee.top/2017/03/09/Android-%E8%93%9D%E7%89%99%E9%85%8D%E5%AF%B9%E8%BF%9E%E6%8E%A5%E8%AF%A6%E7%BB%86%E6%8C%87%E5%AF%BC/"/>
     <id>http://xiaosee.top/2017/03/09/Android-蓝牙配对连接详细指导/</id>
     <published>2017-03-09T08:10:53.000Z</published>
-    <updated>2017-03-09T15:44:32.546Z</updated>
+    <updated>2017-03-10T01:21:15.878Z</updated>
     
     <content type="html"><![CDATA[<p>公司的项目中需要连接一个蓝牙耳机的功能。Android 并没有开放配对连接耳机的接口，而且网上大部分资料都是讲解如何连接蓝牙4.0的，很少有资料详细介绍蓝牙2.0相关的。自己先是花了一些时间看系统的蓝牙设置代码，期间还是踩了不少坑才摸索出解决办法。所有把我自己摸索总结出来的经验梳理记录下，以便备份。<br><a id="more"></a></p>
 <h3 id="本文适用的范围"><a href="#本文适用的范围" class="headerlink" title="本文适用的范围"></a>本文适用的范围</h3><p>Android蓝牙部分是很复杂的，也涉及很多名词和功能。本文介绍的配对连接方法适用于一般的蓝牙耳机、音响等，并不是连接蓝牙 BLE 或者想用蓝牙来进行 Socket 通信的。</p>
@@ -143,7 +143,7 @@
     <link href="http://xiaosee.top/2017/03/08/Java-int-%E8%BD%AC-String/"/>
     <id>http://xiaosee.top/2017/03/08/Java-int-转-String/</id>
     <published>2017-03-08T09:39:41.000Z</published>
-    <updated>2017-03-09T12:43:11.700Z</updated>
+    <updated>2017-03-09T03:21:23.567Z</updated>
     
     <content type="html"><![CDATA[<h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">12345</span>;</div><div class="line">String s = <span class="string">""</span>;</div></pre></td></tr></table></figure>
 <ol>
@@ -193,7 +193,7 @@
     <link href="http://xiaosee.top/2017/03/08/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%B3%95/"/>
     <id>http://xiaosee.top/2017/03/08/博客维护方法/</id>
     <published>2017-03-08T08:10:23.000Z</published>
-    <updated>2017-03-09T12:43:11.700Z</updated>
+    <updated>2017-03-09T05:59:21.036Z</updated>
     
     <content type="html"><![CDATA[<p>博客搭建好了，记录下维护方法。免得以后忘记了。<br><a id="more"></a></p>
 <h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><ol>
