@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaosee.top/"/>
-  <updated>2017-03-10T01:21:15.878Z</updated>
+  <updated>2020-07-20T09:55:40.110Z</updated>
   <id>http://xiaosee.top/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 开发环境搭建大全</title>
+    <link href="http://xiaosee.top/2020/07/20/Android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%85%A8/"/>
+    <id>http://xiaosee.top/2020/07/20/Android-开发环境搭建大全/</id>
+    <published>2020-07-20T09:07:49.000Z</published>
+    <updated>2020-07-20T09:55:40.110Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下Android开发环境的配置，免得每次Google。<br><a id="more"></a></p>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p>1.下载安装JDK：<a href="https://www.oracle.com/cn/java/technologies/javase/javase-jdk8-downloads.html" target="_blank" rel="external">下载</a><br>2.设置环境变量<code>JAVA_HOME</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\Java\jdk1.8.0_201</div></pre></td></tr></table></figure></p>
+<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h3><p>Android Studio的配置文件默认在 C 盘会占用相当大的空间，我们需要把它迁移走（下文中所有的 X 均代表盘符）。<br>1.新建文件夹<code>X:\Android\setting</code><br>2.然后把 C 盘目录里的<code>idea.properties</code>文件拷贝到这里，并且添加两行配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">idea.config.path=X:/Android/setting/.AndroidStudio/config</div><div class="line">idea.system.path=X:/Android/setting/.AndroidStudio/system</div></pre></td></tr></table></figure></p>
+<p>3.设置环境变量<code>STUDIO_PROPERTIES</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X:\Android\setting\idea.properties</div></pre></td></tr></table></figure></p>
+<h3 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h3><p>新建一个目录<code>F:\Android\sdk</code>并在Android Studio里面把SDK的目录设置到这里就可以了，比较简单（注意目录不要有空格和中文字符）。</p>
+<h3 id="AVD"><a href="#AVD" class="headerlink" title="AVD"></a>AVD</h3><p>模拟器默认也在 C 盘，同理也需要迁移。<br>1.新建文件夹<code>X:\Android\setting</code><br>2.设置环境变量<code>ANDROID_SDK_HOME</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X:\Android\setting</div></pre></td></tr></table></figure></p>
+<h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><p>Gradle 的缓存文件也在 C 盘，同理也需要迁移。<br>1.新建文件夹<code>X:\Android\setting\.gradle</code><br>2.Android Studio 设置 Settings-&gt;Build-&gt;Gradle-&gt;Gradle user home:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X:/Android/setting/.gradle</div></pre></td></tr></table></figure></p>
+<p>2.设置环境变量<code>GRADLE_USER_HOME</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X:\Android\setting\.gradle</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一下Android开发环境的配置，免得每次Google。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Android 环境" scheme="http://xiaosee.top/tags/Android-%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 蓝牙配对连接详细指导</title>
@@ -143,7 +171,7 @@
     <link href="http://xiaosee.top/2017/03/08/Java-int-%E8%BD%AC-String/"/>
     <id>http://xiaosee.top/2017/03/08/Java-int-转-String/</id>
     <published>2017-03-08T09:39:41.000Z</published>
-    <updated>2017-03-09T03:21:23.567Z</updated>
+    <updated>2017-03-09T03:21:23.568Z</updated>
     
     <content type="html"><![CDATA[<h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">12345</span>;</div><div class="line">String s = <span class="string">""</span>;</div></pre></td></tr></table></figure>
 <ol>
@@ -193,7 +221,7 @@
     <link href="http://xiaosee.top/2017/03/08/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%B3%95/"/>
     <id>http://xiaosee.top/2017/03/08/博客维护方法/</id>
     <published>2017-03-08T08:10:23.000Z</published>
-    <updated>2017-03-09T05:59:21.036Z</updated>
+    <updated>2017-03-09T05:59:21.037Z</updated>
     
     <content type="html"><![CDATA[<p>博客搭建好了，记录下维护方法。免得以后忘记了。<br><a id="more"></a></p>
 <h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><ol>
